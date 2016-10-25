@@ -1,0 +1,27 @@
+name: Spectre
+version: 0.1.0
+description: Simple theme using Spectre CSS framework (SCSS Version)
+icon: rebel
+author:
+  name: Team Grav
+  email: devs@getgrav.org
+homepage: https://github.com/team-grav/grav-theme-spectre
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
+bugs: https://github.com/team-grav/grav-theme-spectre/issues
+readme: https://github.com/team-grav/grav-theme-spectre/blob/develop/README.md
+license: MIT
+
+form:
+  validation: loose
+  fields:
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in Menu
+        highlight: 1
+        default: 1
+        options:
+          1: PLUGIN_ADMIN.ENABLED
+          0: PLUGIN_ADMIN.DISABLED
+        validate:
+          type: bool

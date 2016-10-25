@@ -1,0 +1,75 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: theme_config.default_lang }}">
+<head>
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'partials/metadata.html.twig' %}
+
+    <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png') }}" />
+    <link rel="canonical" href="{{ page.url(true, true) }}" />
+
+    {% block stylesheets %}
+        {% do assets.addCss('theme://css/spectre.css', 100) %}
+        {% do assets.addCss('theme://css/theme.css', 99) %}
+        {% do assets.addCss('theme://css/font-awesome.min.css', 98) %}
+    {% endblock %}
+    {{ assets.css() }}
+
+    {% block javascripts %}
+        {% do assets.addJs('jquery', 100) %}
+    {% endblock %}
+    {{ assets.js() }}
+
+{% endblock head%}
+</head>
+<body id="top" class="{{ page.header.body_classes }}">
+
+{% block header %}
+    <section id="header" class="section bg-gray">
+        <div class="container grid-960">
+
+            <div class="columns">
+                <div class="column col-6">
+                    <a class="logo" href="{{ base_url == '' ? '/' : base_url }}">
+                        <img src="{{ url('theme://images/logo.svg') }}" />
+                        <h1>{{ config.site.title }}</h1>
+                    </a>
+                </div>
+                <div class="column col-6">
+                    {% block header_navigation %}
+                    <nav class="main-nav">
+                        {% include 'partials/navigation.html.twig' %}
+                    </nav>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block body %}
+    <section id="body" class="section">
+        <div class="container grid-960">
+        {% block content %}{% endblock %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <section id="footer" class="section">
+        <div class="container grid-960 text-center">
+            <p><a href="http://getgrav.org"><i class="fa fa-grav"></i> Grav</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="http://www.rockettheme.com">RocketTheme</a>.</p>
+        </div>
+    </section>
+{% endblock %}
+
+{% block bottom %}
+    {{ assets.js('bottom') }}
+{% endblock %}
+
+</body>

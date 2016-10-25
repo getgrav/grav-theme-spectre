@@ -1,0 +1,24 @@
+body {
+    font-size: 1.6rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.logo {
+    img {
+        max-width: 50px;
+        vertical-align: middle;
+    }
+    h1 {
+        display: inline-block;
+        margin: 0 0 0 1rem;
+        font-size: 4rem;
+        vertical-align: middle;
+    }
+}
+
+.main-nav .tab .tab-item a {
+    padding: 1rem 2rem;
+}
