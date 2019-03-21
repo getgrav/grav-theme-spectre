@@ -1,5 +1,5 @@
 name: Spectre
-version: 0.1.0
+version: 0.2.0
 description: Simple theme using Spectre CSS framework (SCSS Version)
 icon: rebel
 author:
@@ -12,6 +12,9 @@ bugs: https://github.com/team-grav/grav-theme-spectre/issues
 readme: https://github.com/team-grav/grav-theme-spectre/blob/develop/README.md
 license: MIT
 
+dependencies:
+  - { name: grav, version: '>=1.5.10' }
+  
 form:
   validation: loose
   fields:

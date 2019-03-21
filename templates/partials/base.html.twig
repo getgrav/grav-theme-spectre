@@ -1,6 +1,6 @@
 {% set theme_config = attribute(config.themes, config.system.pages.theme) %}
 <!DOCTYPE html>
-<html lang="{{ grav.language.getActive ?: theme_config.default_lang }}">
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
 <head>
 {% block head %}
     <meta charset="utf-8" />
@@ -18,12 +18,15 @@
         {% do assets.addCss('theme://css/theme.css', 99) %}
         {% do assets.addCss('theme://css/font-awesome.min.css', 98) %}
     {% endblock %}
-    {{ assets.css() }}
 
     {% block javascripts %}
         {% do assets.addJs('jquery', 100) %}
     {% endblock %}
-    {{ assets.js() }}
+
+    {% block assets deferred %}
+        {{ assets.css()|raw }}
+        {{ assets.js()|raw }}
+    {% endblock %}
 
 {% endblock head%}
 </head>
@@ -69,7 +72,7 @@
 {% endblock %}
 
 {% block bottom %}
-    {{ assets.js('bottom') }}
+    {{ assets.js('bottom')|raw }} 
 {% endblock %}
 
 </body>
